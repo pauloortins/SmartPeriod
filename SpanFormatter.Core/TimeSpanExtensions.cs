@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpanFormatter.Core
+namespace SmartPeriod.Core
 {
     public static class TimeSpanExtensions
     {

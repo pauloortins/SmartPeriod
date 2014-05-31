@@ -7,8 +7,8 @@
     <ProjectGuid>{D3EA5EA5-6AA5-4520-AB83-34D4DD60C272}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SpanFormatter.Core</RootNamespace>
-    <AssemblyName>SpanFormatter.Core</AssemblyName>
+    <RootNamespace>SmartPeriod.Core</RootNamespace>
+    <AssemblyName>SmartPeriod.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

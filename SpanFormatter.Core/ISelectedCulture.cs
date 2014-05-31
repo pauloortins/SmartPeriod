@@ -1,4 +1,6 @@
-﻿namespace SpanFormatter.Core
+﻿using SmartPeriod.Core.DatePieces;
+
+namespace SmartPeriod.Core
 {
     public interface ISelectedCulture
     {

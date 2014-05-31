@@ -1,6 +1,6 @@
-﻿using SpanFormatter.Core.DatePieces;
+﻿using SmartPeriod.Core.DatePieces;
 
-namespace SpanFormatter.Core
+namespace SmartPeriod.Core
 {
     public class SelectedCulturePtBr : ISelectedCulture
     {

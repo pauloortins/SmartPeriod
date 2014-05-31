@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SpanFormatter.Core.DatePieces;
+using SmartPeriod.Core.DatePieces;
 
-namespace SpanFormatter.Core
+namespace SmartPeriod.Core
 {
     public class SelectedCultureEnUs : ISelectedCulture
     {
