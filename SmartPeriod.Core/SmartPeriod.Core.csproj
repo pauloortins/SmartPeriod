@@ -48,8 +48,7 @@
     <Compile Include="ISelectedCulture.cs" />
     <Compile Include="SelectedCultureEnUs.cs" />
     <Compile Include="SelectedCulturePtBr.cs" />
-    <Compile Include="SpanFormatter.cs" />
-    <Compile Include="TimeSpanExtensions.cs" />
+    <Compile Include="SmartPeriod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DatePieces\YearPiece.cs" />
   </ItemGroup>
