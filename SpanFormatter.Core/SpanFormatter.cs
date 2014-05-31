@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using SpanFormatter.Core.DatePieces;
+using SmartPeriod.Core.DatePieces;
 
-namespace SpanFormatter.Core
+namespace SmartPeriod.Core
 {
-    public class SpanFormatter
+    public class SmartPeriod
     {
         private bool _showEmpty;
         private DateTime _startDate;       
@@ -14,7 +14,7 @@ namespace SpanFormatter.Core
         private ISelectedCulture _selectedCulture;
         private List<DatePiece> _datePieces = new List<DatePiece>();
         
-        public SpanFormatter(DateTime startDate, DateTime endDate)
+        public SmartPeriod(DateTime startDate, DateTime endDate)
         {
             _startDate = startDate;
             _endDate = endDate;
@@ -34,64 +34,64 @@ namespace SpanFormatter.Core
             return new SelectedCultureEnUs();
         }              
   
-        public SpanFormatter Date()
+        public SmartPeriod Date()
         {
             return Years().Months().Days();
         }
 
-        public SpanFormatter Time()
+        public SmartPeriod Time()
         {
             return Hours().Minutes().Seconds();
         }
 
-        public SpanFormatter DateTime()
+        public SmartPeriod DateTime()
         {
             return Date().Time();
         }
 
-        public SpanFormatter Years()
+        public SmartPeriod Years()
         {
             _datePieces.Add(_selectedCulture.Year);            
             return this;
         }
 
-        public SpanFormatter Months()
+        public SmartPeriod Months()
         {
             _datePieces.Add(_selectedCulture.Month);
             return this;
         }
 
-        public SpanFormatter Days()
+        public SmartPeriod Days()
         {
             _datePieces.Add(_selectedCulture.Day);
             return this;
         }
 
-        public SpanFormatter Hours()
+        public SmartPeriod Hours()
         {
             _datePieces.Add(_selectedCulture.Hour);
             return this;
         }
 
-        public SpanFormatter Minutes()
+        public SmartPeriod Minutes()
         {
             _datePieces.Add(_selectedCulture.Minute);
             return this;
         }
 
-        public SpanFormatter Seconds()
+        public SmartPeriod Seconds()
         {
             _datePieces.Add(_selectedCulture.Second);
             return this;
         }
 
-        public SpanFormatter ShowEmpty()
+        public SmartPeriod ShowEmpty()
         {
             _showEmpty = true;
             return this;
         }
 
-        public SpanFormatter Culture(ISelectedCulture selectedCulture)
+        public SmartPeriod Culture(ISelectedCulture selectedCulture)
         {
             _selectedCulture = selectedCulture;
 

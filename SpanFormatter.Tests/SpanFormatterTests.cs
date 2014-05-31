@@ -1,16 +1,16 @@
 ﻿using System;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SpanFormatter.Core;
+using SmartPeriod.Core;
 
-namespace SpanFormatter.Tests
+namespace SmartPeriod.Tests
 {
     [TestClass]
-    public class SpanFormatterTests
+    public class SmartPeriodTests
     {
-        private Core.SpanFormatter CreateSpan(DateTime endDate, DateTime startDate)
+        private Core.SmartPeriod CreatePeriod(DateTime endDate, DateTime startDate)
         {            
-            return new Core.SpanFormatter(startDate, endDate);
+            return new Core.SmartPeriod(startDate, endDate);
         }
 
         [TestMethod]
@@ -19,7 +19,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2013, 12, 12);
             var aDateYearAgo = new DateTime(2012, 12, 12);
 
-            CreateSpan(aDate, aDateYearAgo).Years().Months().Days().ToString().Should().Be("1 year");                        
+            CreatePeriod(aDate, aDateYearAgo).Years().Months().Days().ToString().Should().Be("1 year");                        
         }
 
         [TestMethod]
@@ -28,7 +28,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 1, 12);
             var aDateYearAgo = new DateTime(2012, 12, 12);
 
-            CreateSpan(aDate, aDateYearAgo).Months().ToString().Should().Be("13 months");
+            CreatePeriod(aDate, aDateYearAgo).Months().ToString().Should().Be("13 months");
         }
         
         [TestMethod]
@@ -37,7 +37,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 2, 2);
             var aDateTwoYearsAgo = new DateTime(2012, 2, 2);
 
-            CreateSpan(aDate, aDateTwoYearsAgo).Years().Months().Days().ToString().Should().Be("2 years");            
+            CreatePeriod(aDate, aDateTwoYearsAgo).Years().Months().Days().ToString().Should().Be("2 years");            
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2013, 2, 1);
             var anotherDate = new DateTime(2012, 3, 1);
 
-            CreateSpan(aDate, anotherDate).Date().ToString().Should().Be("11 months");
+            CreatePeriod(aDate, anotherDate).Date().ToString().Should().Be("11 months");
         }
 
         
@@ -56,7 +56,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 2, 2);
             var anotherDate = new DateTime(2014, 1, 2);
 
-            CreateSpan(aDate, anotherDate).Date().ToString().Should().Be("1 month");            
+            CreatePeriod(aDate, anotherDate).Date().ToString().Should().Be("1 month");            
         }
 
         
@@ -66,7 +66,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = new DateTime(2014, 10, 3);
 
-            CreateSpan(aDate, anotherDate).Date().ToString().Should().Be("1 day");
+            CreatePeriod(aDate, anotherDate).Date().ToString().Should().Be("1 day");
         }
 
         
@@ -76,7 +76,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = new DateTime(2014, 10, 2);
 
-            CreateSpan(aDate, anotherDate).Date().ToString().Should().Be("2 days");
+            CreatePeriod(aDate, anotherDate).Date().ToString().Should().Be("2 days");
         }
 
         
@@ -86,7 +86,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddHours(-1);
 
-            CreateSpan(aDate, anotherDate).Time().ToString().Should().Be("1 hour");            
+            CreatePeriod(aDate, anotherDate).Time().ToString().Should().Be("1 hour");            
         }
 
         
@@ -96,7 +96,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddHours(-2);
 
-            CreateSpan(aDate, anotherDate).Time().ToString().Should().Be("2 hours");
+            CreatePeriod(aDate, anotherDate).Time().ToString().Should().Be("2 hours");
         }
 
         
@@ -106,7 +106,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddMinutes(-1);
 
-            CreateSpan(aDate, anotherDate).Time().ToString().Should().Be("1 minute");
+            CreatePeriod(aDate, anotherDate).Time().ToString().Should().Be("1 minute");
         }
 
         
@@ -116,7 +116,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddMinutes(-2);
 
-            CreateSpan(aDate, anotherDate).Time().ToString().Should().Be("2 minutes");
+            CreatePeriod(aDate, anotherDate).Time().ToString().Should().Be("2 minutes");
         }
 
         
@@ -126,7 +126,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddSeconds(-1);
 
-            CreateSpan(aDate, anotherDate).Time().ToString().Should().Be("1 second");
+            CreatePeriod(aDate, anotherDate).Time().ToString().Should().Be("1 second");
         }
 
         
@@ -136,7 +136,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddSeconds(-2);
 
-            CreateSpan(aDate, anotherDate).Time().ToString().Should().Be("2 seconds");
+            CreatePeriod(aDate, anotherDate).Time().ToString().Should().Be("2 seconds");
         }
         
         [TestMethod]
@@ -145,7 +145,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2014, 7, 9);
             var anotherDate = new DateTime(2012, 3, 3);
 
-            CreateSpan(aDate, anotherDate).Years().Months().Days().ToString().Should().Be("2 years, 4 months, 6 days");
+            CreatePeriod(aDate, anotherDate).Years().Months().Days().ToString().Should().Be("2 years, 4 months, 6 days");
         }
 
         [TestMethod]
@@ -154,7 +154,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2013, 12, 12);
             var aDateYearAgo = new DateTime(2012, 12, 12);
 
-            CreateSpan(aDate, aDateYearAgo).Years().Months().Days().ShowEmpty().ToString().Should().Be("1 year, 0 months, 0 days");
+            CreatePeriod(aDate, aDateYearAgo).Years().Months().Days().ShowEmpty().ToString().Should().Be("1 year, 0 months, 0 days");
         }
 
         [TestMethod]
@@ -163,7 +163,7 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2013, 12, 12);
             var aDateYearAgo = new DateTime(2012, 12, 12);
 
-            CreateSpan(aDate, aDateYearAgo).Years().Months().Days().ShowEmpty().Culture(new SelectedCulturePtBr()).ToString().Should().Be("1 ano, 0 meses, 0 dias");
+            CreatePeriod(aDate, aDateYearAgo).Years().Months().Days().ShowEmpty().Culture(new SelectedCulturePtBr()).ToString().Should().Be("1 ano, 0 meses, 0 dias");
         }
 
         [TestMethod]
@@ -172,8 +172,8 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2013, 12, 12);
             var aDateYearAgo = new DateTime(2012, 12, 12);
 
-            var full = CreateSpan(aDate, aDateYearAgo).Years().Months().Days().ToString();
-            var shortCut = CreateSpan(aDate, aDateYearAgo).Date().ToString();
+            var full = CreatePeriod(aDate, aDateYearAgo).Years().Months().Days().ToString();
+            var shortCut = CreatePeriod(aDate, aDateYearAgo).Date().ToString();
 
             full.Should().Be(shortCut);
         }
@@ -184,8 +184,8 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2013, 12, 12);
             var aDateYearAgo = new DateTime(2012, 12, 12);
 
-            var full = CreateSpan(aDate, aDateYearAgo).Hours().Minutes().Seconds().ToString();
-            var shortCut = CreateSpan(aDate, aDateYearAgo).Time().ToString();
+            var full = CreatePeriod(aDate, aDateYearAgo).Hours().Minutes().Seconds().ToString();
+            var shortCut = CreatePeriod(aDate, aDateYearAgo).Time().ToString();
 
             full.Should().Be(shortCut);
         }
@@ -196,8 +196,8 @@ namespace SpanFormatter.Tests
             var aDate = new DateTime(2013, 12, 12,3,2,1);
             var aDateYearAgo = new DateTime(2012, 12, 12,6,5,4);
 
-            var full = CreateSpan(aDate, aDateYearAgo).DateTime().ToString();
-            var shortCut = CreateSpan(aDate, aDateYearAgo).Date().Time().ToString();
+            var full = CreatePeriod(aDate, aDateYearAgo).DateTime().ToString();
+            var shortCut = CreatePeriod(aDate, aDateYearAgo).Date().Time().ToString();
 
             full.Should().Be(shortCut);
         }

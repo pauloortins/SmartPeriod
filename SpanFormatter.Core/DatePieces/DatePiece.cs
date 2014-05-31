@@ -1,6 +1,7 @@
 ﻿using System;
+using SmartPeriod.Core;
 
-namespace SpanFormatter.Core
+namespace SmartPeriod.Core.DatePieces
 {
     public abstract class DatePiece
     {

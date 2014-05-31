@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpanFormatter.Core.DatePieces
+namespace SmartPeriod.Core.DatePieces
 {
     public class YearPiece : DatePiece
     {
