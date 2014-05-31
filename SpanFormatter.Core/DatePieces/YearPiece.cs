@@ -13,14 +13,27 @@ namespace SpanFormatter.Core.DatePieces
             return culture.Year;
         }
 
-        public override string ToStr(TimeSpan span, bool showEmpty)
+        public int CalculateYears(DateTime startDate, DateTime endDate)
         {
-            return DatePieceToString(span.GetYears(), showEmpty);
+            var years = 0;
+
+            while (startDate.AddYears(1) <= endDate)
+            {
+                startDate = startDate.AddYears(1);
+                years += 1;
+            }
+
+            return years;
         }
 
-        public override TimeSpan Subtract(TimeSpan span)
+        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty)
         {
-            return new TimeSpan((int)Math.Round(365.2425 * span.GetYears()), 0, 0, 0);   
+            return DatePieceToString(CalculateYears(startDate,endDate), showEmpty);
+        }
+
+        public override DateTime Subtract(DateTime startDate, DateTime endDate)
+        {
+            return startDate.AddYears(CalculateYears(startDate, endDate));
         }        
     }
 }

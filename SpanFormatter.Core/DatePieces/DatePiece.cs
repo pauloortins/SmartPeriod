@@ -27,8 +27,8 @@ namespace SpanFormatter.Core
         }
 
         public abstract DatePiece ChangeCulture(ISelectedCulture culture);
-        public abstract string ToStr(TimeSpan span, bool showEmpty);
-        public abstract TimeSpan Subtract(TimeSpan span);
+        public abstract string ToStr(DateTime startDate, DateTime endDate, bool showEmpty);
+        public abstract DateTime Subtract(DateTime startDate, DateTime endDate);
 
         public string Singular { get; set; }
         public string Plural { get; set; }

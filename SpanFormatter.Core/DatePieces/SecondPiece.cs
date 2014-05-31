@@ -17,14 +17,14 @@ namespace SpanFormatter.Core.DatePieces
             return culture.Second;
         }
 
-        public override string ToStr(TimeSpan span, bool showEmpty)
+        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty)
         {
-            return DatePieceToString(span.Seconds, showEmpty);
+            return DatePieceToString((endDate - startDate).Seconds, showEmpty);
         }
 
-        public override TimeSpan Subtract(TimeSpan span)
+        public override DateTime Subtract(DateTime startDate, DateTime endDate)
         {
-            return new TimeSpan(0, 0, 0, span.Seconds);
+            return startDate.AddSeconds((endDate - startDate).Seconds);
         }
     }
 }

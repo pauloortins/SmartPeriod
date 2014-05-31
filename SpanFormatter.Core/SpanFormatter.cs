@@ -9,13 +9,15 @@ namespace SpanFormatter.Core
     public class SpanFormatter
     {
         private bool _showEmpty;
-        private TimeSpan _span;        
+        private DateTime _startDate;       
+        private DateTime _endDate;       
         private ISelectedCulture _selectedCulture;
         private List<DatePiece> _datePieces = new List<DatePiece>();
         
-        public SpanFormatter(TimeSpan span)
+        public SpanFormatter(DateTime startDate, DateTime endDate)
         {
-            _span = span;            
+            _startDate = startDate;
+            _endDate = endDate;
             _selectedCulture = GetCulture();            
         }
 
@@ -35,6 +37,16 @@ namespace SpanFormatter.Core
         public SpanFormatter Date()
         {
             return Years().Months().Days();
+        }
+
+        public SpanFormatter Time()
+        {
+            return Hours().Minutes().Seconds();
+        }
+
+        public SpanFormatter DateTime()
+        {
+            return Date().Time();
         }
 
         public SpanFormatter Years()
@@ -93,8 +105,8 @@ namespace SpanFormatter.Core
 
             _datePieces.ForEach(x =>
                 {
-                    str += x.ToStr(_span, _showEmpty);
-                    _span -= x.Subtract(_span);
+                    str += x.ToStr(_startDate, _endDate, _showEmpty);
+                    _startDate = x.Subtract(_startDate, _endDate);
                 });
 
             if (str.EndsWith(", "))

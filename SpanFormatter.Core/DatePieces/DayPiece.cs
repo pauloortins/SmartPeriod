@@ -18,14 +18,14 @@ namespace SpanFormatter.Core.DatePieces
             return culture.Day;
         }
 
-        public override string ToStr(TimeSpan span, bool showEmpty)
+        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty)
         {
-            return DatePieceToString(span.Days, showEmpty);
+            return DatePieceToString((endDate-startDate).Days, showEmpty);
         }
 
-        public override TimeSpan Subtract(TimeSpan span)
+        public override DateTime Subtract(DateTime startDate, DateTime endDate)
         {
-            return new TimeSpan(span.Days, 0, 0, 0);
+            return startDate.AddDays((endDate - startDate).Days);
         }
     }
 }

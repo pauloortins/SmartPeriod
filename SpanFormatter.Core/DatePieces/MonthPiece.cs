@@ -9,7 +9,7 @@ namespace SpanFormatter.Core.DatePieces
     public class MonthPiece : DatePiece
     {
         public MonthPiece(string singular, string plural) : base(singular, plural)
-        {
+        {            
         }
 
         public override DatePiece ChangeCulture(ISelectedCulture culture)
@@ -17,14 +17,27 @@ namespace SpanFormatter.Core.DatePieces
             return culture.Month;
         }
 
-        public override string ToStr(TimeSpan span, bool showEmpty)
+        public int CalculateMonths(DateTime startDate, DateTime endDate)
         {
-            return DatePieceToString(span.GetMonths() % 12, showEmpty);
+            var months = 0;
+
+            while (startDate.AddMonths(1) <= endDate)
+            {
+                startDate = startDate.AddMonths(1);
+                months += 1;
+            }
+
+            return months;
         }
 
-        public override TimeSpan Subtract(TimeSpan span)
+        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty)
         {
-            return new TimeSpan((int)Math.Round(30.436875 * span.GetMonths()), 0, 0, 0);
+            return DatePieceToString(CalculateMonths(startDate, endDate), showEmpty);
+        }
+
+        public override DateTime Subtract(DateTime startDate, DateTime endDate)
+        {
+            return startDate.AddMonths(CalculateMonths(startDate, endDate));
         }
     }
 }
