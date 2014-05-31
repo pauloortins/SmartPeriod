@@ -58,11 +58,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="SpanFormatterTests.cs" />
+    <Compile Include="SmartPeriodTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SpanFormatter.Core\SmartPeriod.Core.csproj">
+    <ProjectReference Include="..\SmartPeriod.Core\SmartPeriod.Core.csproj">
       <Project>{d3ea5ea5-6aa5-4520-ab83-34d4dd60c272}</Project>
       <Name>SmartPeriod.Core</Name>
     </ProjectReference>
