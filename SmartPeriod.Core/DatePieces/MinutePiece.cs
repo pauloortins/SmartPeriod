@@ -18,14 +18,19 @@ namespace SmartPeriod.Core.DatePieces
             return culture.Minute;
         }
 
+        public int CalculateMinutes(DateTime startDate, DateTime endDate)
+        {
+            return (endDate - startDate).Minutes;
+        }
+
         public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty)
         {
-            return DatePieceToString((endDate - startDate).Minutes ,showEmpty);
+            return DatePieceToString(CalculateMinutes(startDate, endDate), showEmpty);
         }
 
         public override DateTime Subtract(DateTime startDate, DateTime endDate)
         {
-            return startDate.AddMinutes((endDate - startDate).Minutes);
+            return startDate.AddMinutes(CalculateMinutes(startDate, endDate));
         }
     }
 }

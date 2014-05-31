@@ -18,15 +18,20 @@ namespace SmartPeriod.Core.DatePieces
             return culture.Hour;
         }
 
+        public int CalculateHours(DateTime startDate, DateTime endDate)
+        {
+            return (endDate - startDate).Hours;
+        }
+
         public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty)
         {
-            return DatePieceToString((endDate - startDate).Hours, showEmpty);
+            return DatePieceToString(CalculateHours(startDate, endDate), showEmpty);
         }
 
         public override DateTime Subtract(DateTime startDate, DateTime endDate)
         {
 
-            return startDate.AddHours((endDate - startDate).Hours);
+            return startDate.AddHours(CalculateHours(startDate, endDate));
         }
     }
 }

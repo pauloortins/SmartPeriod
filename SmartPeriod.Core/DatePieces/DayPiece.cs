@@ -14,6 +14,11 @@ namespace SmartPeriod.Core.DatePieces
 
         }
 
+        public int CalculateDays(DateTime startDate, DateTime endDate)
+        {
+            return (endDate - startDate).Days;
+        }
+
         public override DatePiece ChangeCulture(ISelectedCulture culture)
         {
             return culture.Day;
@@ -21,12 +26,12 @@ namespace SmartPeriod.Core.DatePieces
 
         public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty)
         {
-            return DatePieceToString((endDate-startDate).Days, showEmpty);
+            return DatePieceToString(CalculateDays(startDate, endDate), showEmpty);
         }
 
         public override DateTime Subtract(DateTime startDate, DateTime endDate)
         {
-            return startDate.AddDays((endDate - startDate).Days);
+            return startDate.AddDays(CalculateDays(startDate, endDate));
         }
     }
 }

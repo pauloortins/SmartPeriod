@@ -46,9 +46,10 @@
     <Compile Include="DatePieces\MonthPiece.cs" />
     <Compile Include="DatePieces\SecondPiece.cs" />
     <Compile Include="ISelectedCulture.cs" />
+    <Compile Include="PeriodFormatter.cs" />
     <Compile Include="SelectedCultureEnUs.cs" />
     <Compile Include="SelectedCulturePtBr.cs" />
-    <Compile Include="SmartPeriod.cs" />
+    <Compile Include="Period.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DatePieces\YearPiece.cs" />
   </ItemGroup>
