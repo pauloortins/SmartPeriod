@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SmartPeriod</id>
+    <version>1.0.0</version>
+    <title>SmartPeriod</title>
+    <authors>Paulo Ortins</authors>
+    <owners>Paulo Ortins</owners>    
+    <projectUrl>https://github.com/pauloortins/SmartPeriod</projectUrl>    
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A set of classes that makes easier to work with date differences and periods</description>
+    <releaseNotes>First release.</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>DateTime DateDiffs Period</tags>
+  </metadata>
+</package>
