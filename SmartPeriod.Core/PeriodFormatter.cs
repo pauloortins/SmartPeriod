@@ -59,13 +59,16 @@ namespace SmartPeriod.Core
     public class Formatter
     {
         private bool _showEmpty;
+        private bool _showMoreSignificant;
         private ISelectedCulture _selectedCulture;
         private List<DatePiece> _datePieces = new List<DatePiece>();
+        private string _separator;
 
         public Formatter()
         {
             _showEmpty = false;
             _selectedCulture = GetCulture();
+            _separator = ", ";
         }
 
         public Formatter Date()
@@ -125,6 +128,18 @@ namespace SmartPeriod.Core
             return this;
         }
 
+        public Formatter ShowOnlyMoreSignificant()
+        {
+            _showMoreSignificant = true;
+            return this;
+        }
+
+        public Formatter Separator(string separator)
+        {
+            _separator = separator;
+            return this;
+        }
+
         public Formatter Culture(ISelectedCulture selectedCulture)
         {
             _selectedCulture = selectedCulture;
@@ -148,18 +163,20 @@ namespace SmartPeriod.Core
 
         public string ToString(DateTime startDate, DateTime endDate)
         {
-            var str = string.Empty;
+            var datePieces = new List<string>();
 
             _datePieces.ForEach(x =>
             {
-                str += x.ToStr(startDate, endDate, _showEmpty);
+                datePieces.Add(x.ToStr(startDate, endDate, _showEmpty, _separator));                
                 startDate = x.Subtract(startDate, endDate);
             });
 
-            if (str.EndsWith(", "))
-                str = str.Substring(0, str.Length - 2);
+            datePieces = datePieces.Where(x => !string.IsNullOrEmpty(x)).ToList();
+            
+            if (_showMoreSignificant)
+                return datePieces.First();
 
-            return str;
+            return string.Join(_separator, datePieces);            
         }
     }
 }

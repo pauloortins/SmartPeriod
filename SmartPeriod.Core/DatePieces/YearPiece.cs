@@ -26,9 +26,9 @@ namespace SmartPeriod.Core.DatePieces
             return years;
         }
 
-        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty)
+        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty, string separator)
         {
-            return DatePieceToString(CalculateYears(startDate,endDate), showEmpty);
+            return DatePieceToString(CalculateYears(startDate,endDate), showEmpty, separator);
         }
 
         public override DateTime Subtract(DateTime startDate, DateTime endDate)

@@ -24,9 +24,9 @@ namespace SmartPeriod.Core.DatePieces
             return culture.Day;
         }
 
-        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty)
+        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty, string separator)
         {
-            return DatePieceToString(CalculateDays(startDate, endDate), showEmpty);
+            return DatePieceToString(CalculateDays(startDate, endDate), showEmpty, separator);
         }
 
         public override DateTime Subtract(DateTime startDate, DateTime endDate)

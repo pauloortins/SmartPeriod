@@ -31,9 +31,9 @@ namespace SmartPeriod.Core.DatePieces
             return months;
         }
 
-        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty)
+        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty, string separator)
         {
-            return DatePieceToString(CalculateMonths(startDate, endDate), showEmpty);
+            return DatePieceToString(CalculateMonths(startDate, endDate), showEmpty, separator);
         }
 
         public override DateTime Subtract(DateTime startDate, DateTime endDate)

@@ -51,7 +51,7 @@ namespace SmartPeriod.Tests
 
         
         [TestMethod]
-        public void When_Converting_ToMoreSignificantTimeString_Should_Convert_A_Month_Properly()
+        public void Should_Format_Date_With_A_Month_Properly()
         {
             var aDate = new DateTime(2014, 2, 2);
             var anotherDate = new DateTime(2014, 1, 2);
@@ -61,7 +61,7 @@ namespace SmartPeriod.Tests
 
         
         [TestMethod]
-        public void When_Converting_ToMoreSignificantTimeString_Should_Convert_A_Day_Properly()
+        public void Should_Format_Date_With_A_Day_Properly()
         {
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = new DateTime(2014, 10, 3);
@@ -71,7 +71,7 @@ namespace SmartPeriod.Tests
 
         
         [TestMethod]
-        public void When_Converting_ToMoreSignificantTimeString_Should_Convert_Days_Properly()
+        public void Should_Format_Date_With_Days_Properly()
         {
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = new DateTime(2014, 10, 2);
@@ -81,7 +81,7 @@ namespace SmartPeriod.Tests
 
         
         [TestMethod]
-        public void When_Converting_ToMoreSignificantTimeString_Should_Convert_A_Hour_Properly()
+        public void Should_Format_Date_With_A_Hour_Properly()
         {
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddHours(-1);
@@ -91,7 +91,7 @@ namespace SmartPeriod.Tests
 
         
         [TestMethod]
-        public void When_Converting_ToMoreSignificantTimeString_Should_Convert_Hours_Properly()
+        public void Should_Format_Date_With_Hours_Properly()
         {
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddHours(-2);
@@ -101,7 +101,7 @@ namespace SmartPeriod.Tests
 
         
         [TestMethod]
-        public void When_Converting_ToMoreSignificantTimeString_Should_Convert_A_Minute_Properly()
+        public void Should_Format_Date_With_A_Minute_Properly()
         {
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddMinutes(-1);
@@ -111,7 +111,7 @@ namespace SmartPeriod.Tests
 
         
         [TestMethod]
-        public void When_Converting_ToMoreSignificantTimeString_Should_Convert_Minutes_Properly()
+        public void Should_Format_Date_With_Minutes_Properly()
         {
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddMinutes(-2);
@@ -121,17 +121,16 @@ namespace SmartPeriod.Tests
 
         
         [TestMethod]
-        public void When_Converting_ToMoreSignificantTimeString_Should_Convert_A_Second_Properly()
+        public void Should_Format_Date_With_A_Second_Properly()
         {
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddSeconds(-1);
 
             CreatePeriod(aDate, anotherDate).ToString(PeriodFormatter.Time()).Should().Be("1 second");
         }
-
         
         [TestMethod]
-        public void When_Converting_ToMoreSignificantTimeString_Should_Convert_Seconds_Properly()
+        public void Should_Format_Date_With_Seconds_Properly()
         {
             var aDate = new DateTime(2014, 10, 4);
             var anotherDate = aDate.AddSeconds(-2);
@@ -200,6 +199,24 @@ namespace SmartPeriod.Tests
             var shortCut = CreatePeriod(aDate, aDateYearAgo).ToString(PeriodFormatter.Date().Time());
 
             full.Should().Be(shortCut);
+        }
+
+        [TestMethod]
+        public void Should_Be_Able_Override_The_Separator()
+        {
+            var aDate = new DateTime(2014, 7, 9);
+            var anotherDate = new DateTime(2012, 3, 3);
+
+            CreatePeriod(aDate, anotherDate).ToString(PeriodFormatter.Years().Months().Days().Separator(" - ")).Should().Be("2 years - 4 months - 6 days");
+        }
+
+        [TestMethod]
+        public void Should_Be_Able_To_Format_Showing_Only_The_More_Significant_Date_Piece()
+        {
+            var aDate = new DateTime(2012, 7, 9);
+            var anotherDate = new DateTime(2012, 3, 3);
+
+            CreatePeriod(aDate, anotherDate).ToString(PeriodFormatter.Years().Months().Days().ShowOnlyMoreSignificant()).Should().Be("4 months");   
         }
     }
 }

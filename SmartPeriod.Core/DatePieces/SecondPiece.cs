@@ -23,9 +23,9 @@ namespace SmartPeriod.Core.DatePieces
             return (endDate - startDate).Seconds;
         }
 
-        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty)
+        public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty, string separator)
         {
-            return DatePieceToString(CalculateSeconds(startDate, endDate), showEmpty);
+            return DatePieceToString(CalculateSeconds(startDate, endDate), showEmpty, separator);
         }
 
         public override DateTime Subtract(DateTime startDate, DateTime endDate)
