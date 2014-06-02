@@ -159,10 +159,13 @@ namespace SmartPeriod.Tests
         [TestMethod]
         public void Should_Be_Able_To_Select_Culture()
         {
-            var aDate = new DateTime(2013, 12, 12);
-            var aDateYearAgo = new DateTime(2012, 12, 12);
+            var endDate = new DateTime(2014, 4, 13, 12, 37, 28);
+            var startDate = new DateTime(2013, 2, 10, 10, 30, 20);
+            var period = new Period(startDate, endDate);
 
-            CreatePeriod(aDate, aDateYearAgo).ToString(PeriodFormatter.Years().Months().Days().ShowEmpty().Culture(new SelectedCulturePtBr())).Should().Be("1 ano, 0 meses, 0 dias");
+            period.ToString(PeriodFormatter.Years().Months().Days().Culture(new SelectedCulturePtBr()))
+                  .Should()
+                  .Be("1 ano, 2 meses, 3 dias");
         }
 
         [TestMethod]

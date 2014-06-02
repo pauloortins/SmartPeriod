@@ -155,7 +155,7 @@ namespace SmartPeriod.Core
             switch (cultureInfo.Name)
             {
                 case "en-US": return new SelectedCultureEnUs();
-                case "pt-BR": return new SelectedCultureEnUs();
+                case "pt-BR": return new SelectedCulturePtBr();
             }
 
             return new SelectedCultureEnUs();
