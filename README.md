@@ -27,7 +27,7 @@ SmartPeriod can be used to first, calculate the time difference between two date
 
 ### Calculating time difference ###
 
-```
+```csharp
 var endDate = new DateTime(2014, 4, 13, 12, 37, 28);
 var startDate = new DateTime(2013, 2, 10, 10, 30, 20);            
 var period = new Period(startDate, endDate);
@@ -42,7 +42,7 @@ Console.WriteLine(period.Seconds); // 8
 
 ### Formatting ###
 
-```
+```csharp
 var endDate = new DateTime(2014, 4, 13, 12, 37, 28);
 var startDate = new DateTime(2013, 2, 10, 10, 30, 20);            
 var period = new Period(startDate, endDate);
@@ -81,7 +81,7 @@ You can also use custom options.
 
 ###### Custom Separator ######
 
-```
+```csharp
 var endDate = new DateTime(2014, 4, 13, 12, 37, 28);
 var startDate = new DateTime(2013, 2, 10, 10, 30, 20);            
 var period = new Period(startDate, endDate);
@@ -91,7 +91,7 @@ Console.WriteLine(period.ToString(PeriodFormatter.DateTime().Separator(" | ")));
 ```
 
 ##### Show only the datepiece more significant #####
-```
+```csharp
 var endDate = new DateTime(2014, 4, 13, 12, 37, 28);            
 var startDate = new DateTime(2014, 2, 10, 10, 30, 20);     
 var period = new Period(startDate, endDate);
@@ -102,7 +102,7 @@ Console.WriteLine(period.ToString(PeriodFormatter.DateTime().ShowOnlyMoreSignifi
 
 ##### Show empty date pieces #####
 
-```
+```csharp
 var endDate = new DateTime(2014, 4, 13);
 var startDate = new DateTime(2014, 2, 13);            
 var period = new Period(startDate, endDate);
@@ -113,7 +113,7 @@ Console.WriteLine(period.ToString(PeriodFormatter.Date().ShowEmpty()));
 
 ##### Custom Culture #####
 
-```
+```csharp
 var endDate = new DateTime(2014, 4, 13, 12, 37, 28);
 var startDate = new DateTime(2013, 2, 10, 10, 30, 20);            
 var period = new Period(startDate, endDate);
@@ -126,7 +126,7 @@ Console.WriteLine(period.ToString(PeriodFormatter.Years().Months().Days().Cultur
 
 Adding more cultures is easy, you only have to implement a interface.
 
-```
+```csharp
 public class SelectedCultureEnUs : ISelectedCulture
 {
     public DatePiece Year { get { return new YearPiece("year", "years"); } set { } }
