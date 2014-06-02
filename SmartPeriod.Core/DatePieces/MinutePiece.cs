@@ -20,7 +20,7 @@ namespace SmartPeriod.Core.DatePieces
 
         public int CalculateMinutes(DateTime startDate, DateTime endDate)
         {
-            return (endDate - startDate).Minutes;
+            return (int)(endDate - startDate).TotalMinutes;
         }
 
         public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty, string separator)

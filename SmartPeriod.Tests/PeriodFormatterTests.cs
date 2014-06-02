@@ -218,5 +218,41 @@ namespace SmartPeriod.Tests
 
             CreatePeriod(aDate, anotherDate).ToString(PeriodFormatter.Years().Months().Days().ShowOnlyMoreSignificant()).Should().Be("4 months");   
         }
+
+        [TestMethod]
+        public void Should_Show_Full_Days_If_Only_Days_Specified()
+        {
+            var endDate = new DateTime(2014, 4, 13, 12, 37, 28);
+            var startDate = new DateTime(2013, 2, 10, 10, 30, 20);
+
+            CreatePeriod(endDate, startDate).ToString(PeriodFormatter.Days()).Should().Be("427 days");
+        }
+
+        [TestMethod]
+        public void Should_Show_Full_Hours_If_Only_Hours_Specified()
+        {
+            var endDate = new DateTime(2014, 4, 13, 12, 37, 28);
+            var startDate = new DateTime(2013, 2, 10, 10, 30, 20);
+
+            CreatePeriod(endDate, startDate).ToString(PeriodFormatter.Hours()).Should().Be("10250 hours");
+        }
+
+        [TestMethod]
+        public void Should_Show_Full_Minutes_If_Only_Minutes_Specified()
+        {
+            var endDate = new DateTime(2014, 4, 13, 12, 37, 28);
+            var startDate = new DateTime(2013, 2, 10, 10, 30, 20);
+
+            CreatePeriod(endDate, startDate).ToString(PeriodFormatter.Minutes()).Should().Be("615007 minutes");
+        }
+
+        [TestMethod]
+        public void Should_Show_Full_Seconds_If_Only_Seconds_Specified()
+        {
+            var endDate = new DateTime(2014, 4, 13, 12, 37, 28);
+            var startDate = new DateTime(2013, 2, 10, 10, 30, 20);
+
+            CreatePeriod(endDate, startDate).ToString(PeriodFormatter.Seconds()).Should().Be("36900428 seconds");
+        }
     }
 }

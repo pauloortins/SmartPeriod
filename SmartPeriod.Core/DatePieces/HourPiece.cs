@@ -20,7 +20,7 @@ namespace SmartPeriod.Core.DatePieces
 
         public int CalculateHours(DateTime startDate, DateTime endDate)
         {
-            return (endDate - startDate).Hours;
+            return (int)(endDate - startDate).TotalHours;
         }
 
         public override string ToStr(DateTime startDate, DateTime endDate, bool showEmpty, string separator)
